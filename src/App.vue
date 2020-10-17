@@ -1,32 +1,55 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div class="map">
+      <Map
+        :countries="getMapCountries"
+      />
     </div>
-    <router-view/>
+    <Info
+      :info="getCurrentInfo"
+    />
+    <div class="allCountries">
+      Allcountries
+    </div>
+    <TotalInfo/>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+<script>
+  import Map from "./components/Map";
+  import Info from "./components/Info"
+  import TotalInfo from "./components/TotalInfo";
+  export default {
+    components:{
+      Map,
+      Info,
+      TotalInfo
+    },
+    mounted() {
+      this.$store.dispatch('fetchPosts')
+    },
+    computed:{
+      getCurrentInfo(){
+        return this.$store.state.currentInfo
+      },
+      getMapCountries(){
+        return this.$store.state.mapCountries
+      }
     }
   }
-}
+</script>
+
+
+<style lang="scss">
+  #app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+  }
+
+  .map{
+    outline: 1px solid red;
+  }
 </style>
