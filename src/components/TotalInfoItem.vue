@@ -1,14 +1,13 @@
 <template>
-    <div class="info">
-        <span v-show="info.Country==undefined" class="text">World</span>
-        <span v-show="info.Country!=undefined" class="text">{{info.Country}}</span>
-        <span class="text">New Confirmed: {{info.NewConfirmed}}</span>
-        <span class="text">Total Confirmed: {{info.TotalConfirmed}}</span>
-        <span class="text">New Deaths: {{info.NewDeaths}}</span>
-        <span class="text">Total Deaths: {{info.TotalDeaths}}</span>
-        <span class="text">New Recovered: {{info.NewRecovered}}</span>
-        <span class="text">Total Recovered: {{info.TotalRecovered}}</span>
-    </div>
+    <tr class="info">
+        <td class="text">{{info.Country}}</td>
+        <td class="text">{{info.NewConfirmed}}</td>
+        <td class="text">{{info.TotalConfirmed}}</td>
+        <td class="text">{{info.NewDeaths}}</td>
+        <td class="text">{{info.TotalDeaths}}</td>
+        <td class="text">{{info.NewRecovered}}</td>
+        <td class="text">{{info.TotalRecovered}}</td>
+    </tr>
 </template>
 
 <script>
@@ -26,6 +25,14 @@
 <style scoped>
     .info{
         display: flex;
-        flex-direction: column;
+        justify-content: space-around;
+        text-transform: uppercase;
+        background: #4A5AB9;
+        margin-top: 10px;
+        padding: 10px;
+    }
+
+    .text{
+        width: 110px;
     }
 </style>
