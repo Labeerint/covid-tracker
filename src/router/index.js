@@ -1,14 +1,21 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import TotalInfo from "../components/TotalInfo";
+import MapWrapper from "../components/MapWrapper";
 
 Vue.use(VueRouter)
 
 const routes = [
-  // {
-  //   path: '/',
-  //   name: 'Home',
-  //   component: Home
-  // }
+  {
+    path: '/',
+    name: 'MapWrapper',
+    component: MapWrapper
+  },
+  {
+    path: '/info',
+    name: 'TotalInfo',
+    component: TotalInfo
+  }
 ]
 
 const router = new VueRouter({

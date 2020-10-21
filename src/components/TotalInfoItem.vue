@@ -1,6 +1,6 @@
 <template>
-    <tr @click="changeCurrentCountry" class="info">
-        <td class="text d">{{info.Country}}</td>
+    <tr class="info">
+        <td class="text ">{{info.Country}}</td>
         <td class="text confirmed">{{info.NewConfirmed}}</td>
         <td class="text confirmed">{{info.TotalConfirmed}}</td>
         <td class="text deaths">{{info.NewDeaths}}</td>
@@ -18,11 +18,6 @@
                 type: Object,
                 required: true
             }
-        },
-        methods:{
-            changeCurrentCountry(){
-                this.$store.commit('changeCurrentCountry', this.info.CountryCode)
-            }
         }
     }
 </script>
@@ -36,7 +31,7 @@
         margin-top: 10px;
         padding: 10px;
         transition: all .5s;
-        cursor: pointer;
+        cursor: default;
 
         &:hover{
             background: #3C4A97;

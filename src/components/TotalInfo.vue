@@ -4,8 +4,12 @@
             <th v-for="field in getFields"
                 :key="field.id"
                 :class="field.classes"
-                @click="sort(field.id)"
-            >{{field.name}}</th>
+            >{{field.name}}
+                <div class="arrows">
+                    <font-awesome-icon class="arrows__item" @click="sortUp(field.id)" icon="angle-up"/>
+                    <font-awesome-icon class="arrows__item" @click="sortDown(field.id)" icon="angle-down"/>
+                </div>
+            </th>
         </tr>
 
         <TotalInfoItem
@@ -32,8 +36,11 @@
             }
         },
         methods:{
-            sort(fieldName){
-                this.$store.dispatch('sort', fieldName)
+            sortUp(fieldName){
+                this.$store.dispatch('sort', {fieldName, n1:-1, n2:1})
+            },
+            sortDown(fieldName){
+                this.$store.dispatch('sort', {fieldName, n1:1, n2:-1})
             }
         }
     }
@@ -46,7 +53,6 @@
     }
 
     .totalInfo{
-        /*width: 1000px;*/
         display: flex;
         justify-content: space-around;
         background: #263238;
@@ -59,7 +65,18 @@
             width: 100px;
             text-align: center;
             text-transform: uppercase;
-            cursor: pointer;
+            cursor: default;
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    .arrows{
+        margin-left: 10px;
+        cursor: pointer;
+
+        &__item{
+            font-size: 30px;
         }
     }
 

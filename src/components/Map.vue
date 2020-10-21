@@ -17,7 +17,7 @@
     export default {
         name: 'Map',
         components: {
-            GChart
+            GChart,
         },
         props:['countries'],
         data () {
@@ -28,11 +28,12 @@
                     }
                 },
                 chartOptions: {
-                        // region: '002', // Africa
                         backgroundColor: '#5580FF',
                         datalessRegionColor: '#f8bbd0',
                         defaultColor: '#f5f5f5',
                         colorAxis: {colors: ['#CD9300', '#e31b23','#e31b23', '#e31b23','#e31b23','#B51E00','#B51E00', '#941900']},
+                        width: 1920,
+                        height: 1015
                 }
             }
         }

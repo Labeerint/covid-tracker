@@ -24,7 +24,7 @@ export default new Vuex.Store({
       state.data = data
       state.currentInfo = data.Global
       state.mapCountries = data.Countries.map(c => [c.CountryCode, c.TotalConfirmed])
-      state.mapCountries.unshift(['Country', 'Loxi'])
+      state.mapCountries.unshift(['Country', 'сonfirmed'])
     },
     changeCurrentCountry:(state, region) => {
         state.data.Countries.every(function (country) {
@@ -39,7 +39,10 @@ export default new Vuex.Store({
     },
     sort:((state, countries) => {
       state.data.Countries = countries
-    })
+    }),
+    globalStatistic:(state)=>{
+      state.currentInfo = state.data.Global
+    }
   },
   actions: {
     async fetchPosts({commit}){
@@ -48,8 +51,8 @@ export default new Vuex.Store({
             commit('setData', data.data);
           })
     },
-    sort({commit, state}, fieldName){
-      let sortData = state.data.Countries.sort((a,b) => a[fieldName] > b[fieldName] ? -1:1)
+    sort({commit, state}, conf){
+      let sortData = state.data.Countries.sort((a,b) => a[conf.fieldName] > b[conf.fieldName] ? conf.n1:conf.n2)
       commit('sort', sortData)
     }
   },
