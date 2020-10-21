@@ -1,6 +1,7 @@
 <template>
     <div>
         <GChart
+                class="map"
                 type="GeoChart"
                 :settings="{ 'packages':['geochart'], 'mapsApiKey':'AIzaSyCtuNLusu4ZSp4_rDlfNzmWVC5vqr973U4'}"
                 :data="countries"
@@ -27,15 +28,16 @@
                     }
                 },
                 chartOptions: {
-                    chart: {
                         // region: '002', // Africa
-                        colorAxis: {colors: ['#00853f', '#000', '#e31b23']},
-                        backgroundColor: '#81d4fa',
+                        backgroundColor: '#5580FF',
                         datalessRegionColor: '#f8bbd0',
                         defaultColor: '#f5f5f5',
-                    }
+                        colorAxis: {colors: ['#CD9300', '#e31b23','#e31b23', '#e31b23','#e31b23','#B51E00','#B51E00', '#941900']},
                 }
             }
         }
     }
 </script>
+
+<style>
+</style>

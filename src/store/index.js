@@ -8,7 +8,16 @@ export default new Vuex.Store({
   state: {
     data: {},
     currentInfo: {},
-    mapCountries: {}
+    mapCountries: {},
+    fields: [
+      {name: 'Country', id: 'Country', classes: 'totalInfo__text'},
+      {name: 'New Confirmed', id: 'NewConfirmed', classes: 'totalInfo__text confirmed'},
+      {name: 'Total Confirmed', id: 'TotalConfirmed', classes: 'totalInfo__text confirmed'},
+      {name: 'New Deaths', id: 'NewDeaths', classes: 'totalInfo__text deaths'},
+      {name: 'Total Deaths', id: 'TotalDeaths', classes: 'totalInfo__text deaths'},
+      {name: 'New Recovered', id: 'NewRecovered', classes: 'totalInfo__text recovered'},
+      {name: 'Total Recovered', id: 'TotalRecovered', classes: 'totalInfo__text recovered'},
+    ]
   },
   mutations: {
     setData:(state, data) =>{
@@ -27,7 +36,10 @@ export default new Vuex.Store({
             return true
           }
         })
-    }
+    },
+    sort:((state, countries) => {
+      state.data.Countries = countries
+    })
   },
   actions: {
     async fetchPosts({commit}){
@@ -35,6 +47,10 @@ export default new Vuex.Store({
           .then((data) =>{
             commit('setData', data.data);
           })
+    },
+    sort({commit, state}, fieldName){
+      let sortData = state.data.Countries.sort((a,b) => a[fieldName] > b[fieldName] ? -1:1)
+      commit('sort', sortData)
     }
   },
   getters: {

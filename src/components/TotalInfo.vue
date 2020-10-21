@@ -1,13 +1,11 @@
 <template>
     <table class="totalInfoWrapper">
         <tr class="totalInfo">
-            <th class="totalInfo__text">Country</th>
-            <th class="totalInfo__text">New Confirmed</th>
-            <th class="totalInfo__text">Total Confirmed</th>
-            <th class="totalInfo__text">New Deaths</th>
-            <th class="totalInfo__text">Total Deaths</th>
-            <th class="totalInfo__text">New Recovered</th>
-            <th class="totalInfo__text">Total Recovered</th>
+            <th v-for="field in getFields"
+                :key="field.id"
+                :class="field.classes"
+                @click="sort(field.id)"
+            >{{field.name}}</th>
         </tr>
 
         <TotalInfoItem
@@ -28,6 +26,14 @@
         computed:{
             getTotalInfo(){
                 return this.$store.state.data.Countries
+            },
+            getFields(){
+                return this.$store.state.fields
+            }
+        },
+        methods:{
+            sort(fieldName){
+                this.$store.dispatch('sort', fieldName)
             }
         }
     }
@@ -35,6 +41,7 @@
 
 <style scoped lang="scss">
     .totalInfoWrapper{
+        width: 100%;
         margin: 0 auto;
     }
 
@@ -52,6 +59,19 @@
             width: 100px;
             text-align: center;
             text-transform: uppercase;
+            cursor: pointer;
         }
+    }
+
+    .confirmed{
+        color: #FF1100;
+    }
+
+    .deaths{
+        color: #000;
+    }
+
+    .recovered{
+        color:#2BFF00;
     }
 </style>

@@ -23,9 +23,34 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
     .info{
         display: flex;
         flex-direction: column;
+        justify-content: space-around;
+        background: rgba(255,255,255,0.7);
+        width: 380px;
+        height: 300px;
+        border-radius: 10px;
+        padding: 10px;
+        position: fixed;
+        right: 20px;
+        top: 20px;
+        color: #000;
+        transition: all .5s;
+
+        &:hover{
+            background: rgba(255,255,255,0.2);
+        }
     }
+
+    .text{
+        text-transform: uppercase;
+        font-size: 20px;
+        font-weight: 700;
+        font-family: 'Abril Fatface';
+        letter-spacing: 2px;
+
+    }
+
 </style>
